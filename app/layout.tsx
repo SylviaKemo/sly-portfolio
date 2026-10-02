@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Jost } from "next/font/google";
 import "./globals.css";
 
@@ -32,6 +32,11 @@ export const metadata: Metadata = {
     images: ["/images/sylvia-avatar.jpg"],
     type: "website",
   },
+};
+
+// Colours the browser UI (e.g. mobile address bar) to match the page background.
+export const viewport: Viewport = {
+  themeColor: "#12071f",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
