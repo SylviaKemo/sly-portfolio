@@ -5,6 +5,7 @@ import { profile } from "@/data/profile";
 import { heroStack } from "@/data/tech";
 import Blob from "./Blob";
 import ScrollCue from "./ScrollCue";
+import SpeechBubble from "./SpeechBubble";
 
 export default function Hero() {
   return (
@@ -50,6 +51,13 @@ export default function Hero() {
         </Reveal>
 
         <ScrollCue />
+      </div>
+
+      {/* Right column: desktop only */}
+      <div className="relative z-10 -mt-10 hidden flex-[1_1_360px] flex-col items-end justify-between gap-8 md:flex">
+        <Reveal className="w-full max-w-[400px]">
+          <SpeechBubble />
+        </Reveal>
       </div>
     </section>
   );

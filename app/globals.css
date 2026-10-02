@@ -48,6 +48,7 @@
   --animate-tl-pulse: tl-pulse 2.4s ease-in-out infinite;
   --animate-tool-bob: tool-bob 4s ease-in-out infinite;
   --animate-work-pulse: work-pulse 2s infinite;
+  --animate-caret: caret 1.06s step-end infinite;
 
   @keyframes hero-blob {
     0%, 100% {
@@ -71,6 +72,9 @@
   @keyframes tl-pulse {
     0%, 100% { box-shadow: 0 0 0 6px color-mix(in oklab, var(--accent) 20%, transparent), 0 0 18px var(--accent); }
     50% { box-shadow: 0 0 0 12px color-mix(in oklab, var(--accent) 8%, transparent), 0 0 32px var(--accent); }
+  }
+  @keyframes caret {
+    50% { opacity: 0; }
   }
   @keyframes tool-bob {
     0%, 100% { transform: translateY(0); }
