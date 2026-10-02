@@ -20,12 +20,6 @@ export default function ContactInfo() {
           </a>
         </div>
         <div>
-          <div className={labelClass}>Phone</div>
-          <a href={profile.phoneHref} className={valueClass}>
-            {profile.phone}
-          </a>
-        </div>
-        <div>
           <div className={labelClass}>Based in</div>
           <span className="text-[22px]">{profile.location}</span>
         </div>
@@ -36,9 +30,6 @@ export default function ContactInfo() {
           </a>
           <a href={profile.linkedin} target="_blank" rel="noreferrer" className="hover:text-muted">
             LinkedIn ↗
-          </a>
-          <a href={profile.phoneHref} className="hover:text-muted">
-            Call ↗
           </a>
         </div>
       </div>
