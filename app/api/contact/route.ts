@@ -12,8 +12,12 @@ export async function POST(request: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_EMAIL;
 
-  // Without a key (e.g. local development) just log the message.
   if (!apiKey || !to) {
+    // In production a missing key would silently lose messages, so fail loudly.
+    if (process.env.NODE_ENV === "production") {
+      return Response.json({ error: "Email is not configured." }, { status: 500 });
+    }
+    // Local development: just log the message.
     console.log("Contact form (email not configured):", { name, email, message });
     return Response.json({ ok: true });
   }
