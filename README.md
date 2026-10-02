@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sylvia Kemo — Portfolio
 
-## Getting Started
+Single-page portfolio for Sylvia Kemo, fullstack developer based in Nairobi.
+Built with **Next.js (App Router)**, **TypeScript** and **Tailwind CSS v4**.
 
-First, run the development server:
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> On machines with little free memory, Turbopack can run out of RAM.
+> Use webpack instead: `npx next dev --webpack` / `npx next build --webpack`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```
+app/
+  layout.tsx            fonts (Jost, Instrument Serif) and metadata
+  page.tsx              puts the sections together
+  globals.css           theme colours, animations, base styles
+  api/contact/route.ts  contact form → email (Resend)
+components/
+  ui/                   small reusable pieces (Section, SectionTitle, ArrowButton, …)
+  Nav/                  floating pill navigation
+  Hero/                 hero section, blob, typing speech bubble, badges
+  Journey/              experience timeline, squiggle line, toolkit bubbles
+  Work/                 projects carousel
+  Services/             services accordion
+  Contact/              contact info and form
+  About.tsx, Testimonials.tsx, Footer.tsx
+data/                   all site content — edit these files to update text
+public/images/          portrait and avatar
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Updating content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All text lives in `data/`, so you rarely need to touch components:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| File | What it holds |
+| --- | --- |
+| `data/profile.ts` | name, contact details, social links, **CV link** |
+| `data/experience.ts` | timeline entries (placeholders — replace) |
+| `data/tools.ts` | toolkit bubbles |
+| `data/projects.ts` | carousel projects (placeholders — add `image` for screenshots) |
+| `data/services.ts` | accordion rows |
+| `data/testimonials.ts` | quotes (placeholders — replace) |
+| `data/tech.ts` | every tech logo (Simple Icons slug + colour) |
 
-## Deploy on Vercel
+## Contact form
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The form posts to `/api/contact`, which sends an email through [Resend](https://resend.com).
+Copy `.env.example` to `.env.local` and set:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+RESEND_API_KEY=...
+CONTACT_EMAIL=Sylviakemo@gmail.com
+```
+
+Set the same variables in your hosting provider (e.g. Vercel). Without them, local
+development just logs messages and production returns an error.
+
+## Theme
+
+Colours are CSS variables in `app/globals.css` (Midnight plum) and are available as
+Tailwind utilities: `bg-accent`, `text-muted`, `border-line2`, `bg-s1`, …
