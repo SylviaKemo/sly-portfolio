@@ -1,6 +1,7 @@
 import Reveal from "@/components/ui/Reveal";
 import { experience } from "@/data/experience";
 import CompanyCard from "./CompanyCard";
+import Squiggle from "./Squiggle";
 
 /**
  * Vertical timeline. On mobile every card sits right of the line;
@@ -9,6 +10,7 @@ import CompanyCard from "./CompanyCard";
 export default function Timeline() {
   return (
     <div className="relative flex flex-col gap-10 py-2">
+      <Squiggle />
       {experience.map((item, index) => {
         const onRight = index % 2 === 1;
 
