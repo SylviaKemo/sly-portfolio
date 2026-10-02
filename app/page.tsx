@@ -3,6 +3,7 @@ import Hero from "@/components/Hero/Hero";
 import Journey from "@/components/Journey/Journey";
 import FloatingPill from "@/components/Nav/FloatingPill";
 import Services from "@/components/Services/Services";
+import Testimonials from "@/components/Testimonials";
 import Work from "@/components/Work/Work";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
         <Journey />
         <Work />
         <Services />
+        <Testimonials />
       </main>
       <FloatingPill />
     </>
