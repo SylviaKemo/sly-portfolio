@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import Contact from "@/components/Contact/Contact";
 import Hero from "@/components/Hero/Hero";
 import Journey from "@/components/Journey/Journey";
 import FloatingPill from "@/components/Nav/FloatingPill";
@@ -16,6 +17,7 @@ export default function Home() {
         <Work />
         <Services />
         <Testimonials />
+        <Contact />
       </main>
       <FloatingPill />
     </>
