@@ -14,9 +14,18 @@ const instrumentSerif = Instrument_Serif({
   style: ["normal", "italic"],
 });
 
+const description =
+  "Sylvia Kemo is a fullstack developer in Nairobi, building fast, reliable web products end to end.";
+
 export const metadata: Metadata = {
   title: "Sylvia Kemo — Fullstack Developer",
-  description: "Portfolio of Sylvia Kemo, fullstack developer based in Nairobi.",
+  description,
+  openGraph: {
+    title: "Sylvia Kemo — Fullstack Developer",
+    description,
+    images: ["/images/sylvia-avatar.jpg"],
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
