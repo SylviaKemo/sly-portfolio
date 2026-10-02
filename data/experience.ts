@@ -25,20 +25,20 @@ export const experience: Experience[] = [
   {
     period: "Jan 2024 – Feb 2025",
     role: "Frontend Developer",
-    company: "GroupWork",
+    company: "GroupWork Kenya",
     description:
       "Built the frontend for a school management platform used by 1,000+ teachers and students, including dashboards, class scheduling, and Zoom and Google Meet integration.",
   },
   {
-    period: "Feb 2023 – Dec 2023",
+    period: "Aug 2023 – Jan 2024",
     role: "Frontend Developer Intern",
-    company: "VellTech",
+    company: "Velltech Group",
     description:
       "Led the development of websites and online stores from start to finish, working closely with designers and project managers to deliver them.",
   },
   {
-    period: "Mar 2023 – Mar 2024",
-    role: "Software Developer",
+    period: "Jun 2022 – Feb 2023",
+    role: "Software Developer Intern",
     company: "Marstruct",
     description:
       "Built full-stack features for web apps, from secure logins and APIs to cloud deployments on AWS.",
