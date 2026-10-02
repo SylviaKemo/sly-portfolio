@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Jost } from "next/font/google";
 import "./globals.css";
 
@@ -17,7 +17,13 @@ const instrumentSerif = Instrument_Serif({
 const description =
   "Sylvia Kemo is a fullstack developer in Nairobi, building fast, reliable web products end to end.";
 
+// Vercel sets VERCEL_PROJECT_PRODUCTION_URL, so link previews get absolute image URLs.
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Sylvia Kemo — Fullstack Developer",
   description,
   openGraph: {
@@ -26,6 +32,11 @@ export const metadata: Metadata = {
     images: ["/images/sylvia-avatar.jpg"],
     type: "website",
   },
+};
+
+// Colours the browser UI (e.g. mobile address bar) to match the page background.
+export const viewport: Viewport = {
+  themeColor: "#12071f",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
