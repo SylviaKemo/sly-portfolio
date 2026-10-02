@@ -3,6 +3,8 @@
  * Needs RESEND_API_KEY and CONTACT_EMAIL (see .env.example).
  */
 
+import { buildContactEmail } from "@/lib/contactEmail";
+
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const asText = (value: unknown) => (typeof value === "string" ? value.trim() : "");
@@ -46,6 +48,8 @@ export async function POST(request: Request) {
     return Response.json({ ok: true });
   }
 
+  const { subject, html, text } = buildContactEmail({ name, email, message });
+
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -53,11 +57,12 @@ export async function POST(request: Request) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "Portfolio <onboarding@resend.dev>",
+      from: "Sylvia's Portfolio <onboarding@resend.dev>",
       to,
       reply_to: email,
-      subject: `New message from ${name}`,
-      text: `${message}\n\n— ${name} (${email})`,
+      subject,
+      html,
+      text,
     }),
   });
 
