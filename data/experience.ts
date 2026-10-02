@@ -18,7 +18,7 @@ export const experience: Experience[] = [
   {
     period: "May 2025 – June 2026",
     role: "Fullstack Developer",
-    company: "NexusWaveAI",
+    company: "Nexus Wave AI",
     description:
       "Built a real-time analytics dashboard for a customer support platform, plus an AI tool that automatically sorts incoming tickets, cutting managers' reporting time by 40%.",
   },
