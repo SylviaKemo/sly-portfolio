@@ -3,7 +3,9 @@
 import { useState } from "react";
 import ArrowButton from "@/components/ui/ArrowButton";
 
-const emptyForm = { name: "", email: "", message: "" };
+// `website` is a hidden honeypot field — only spam bots fill it in.
+const emptyForm = { name: "", email: "", message: "", website: "" };
+const fallbackError = "Something went wrong. Please email me directly instead.";
 
 const fieldClass = "flex flex-col gap-2 border-b border-line2 py-[18px]";
 const labelClass = "text-xs tracking-[0.08em] text-muted uppercase";
@@ -12,6 +14,7 @@ const inputClass = "bg-transparent py-1 text-[22px] outline-none placeholder:tex
 export default function ContactForm() {
   const [form, setForm] = useState(emptyForm);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [error, setError] = useState(fallbackError);
 
   const update = (field: keyof typeof emptyForm) => (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -27,7 +30,14 @@ export default function ContactForm() {
       body: JSON.stringify(form),
     }).catch(() => null);
 
-    setStatus(response?.ok ? "sent" : "error");
+    if (response?.ok) {
+      setStatus("sent");
+      return;
+    }
+
+    const data = await response?.json().catch(() => null);
+    setError(data?.error ?? fallbackError);
+    setStatus("error");
   };
 
   const reset = () => {
@@ -55,6 +65,16 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+      <input
+        type="text"
+        name="website"
+        value={form.website}
+        onChange={update("website")}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="hidden"
+      />
       <label className={fieldClass}>
         <span className={labelClass}>Your name *</span>
         <input required value={form.name} onChange={update("name")} placeholder="Jane Doe" className={inputClass} />
@@ -86,7 +106,7 @@ export default function ContactForm() {
       </ArrowButton>
       {status === "error" && (
         <p role="alert" className="mt-2 text-sm text-accent">
-          Something went wrong. Please email me directly instead.
+          {error}
         </p>
       )}
     </form>

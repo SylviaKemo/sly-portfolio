@@ -2,11 +2,35 @@
  * POST /api/contact — sends the contact form to Sylvia's inbox via Resend.
  * Needs RESEND_API_KEY and CONTACT_EMAIL (see .env.example).
  */
+
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const asText = (value: unknown) => (typeof value === "string" ? value.trim() : "");
+
 export async function POST(request: Request) {
-  const { name, email, message } = await request.json();
+  const body = await request.json().catch(() => null);
+  if (!body) {
+    return Response.json({ error: "Invalid request." }, { status: 400 });
+  }
+
+  // Honeypot: a hidden field real visitors never fill in. Bots usually do,
+  // so pretend it worked and send nothing.
+  if (asText(body.website)) {
+    return Response.json({ ok: true });
+  }
+
+  const name = asText(body.name);
+  const email = asText(body.email);
+  const message = asText(body.message);
 
   if (!name || !email || !message) {
     return Response.json({ error: "Name, email and message are required." }, { status: 400 });
+  }
+  if (!EMAIL_PATTERN.test(email)) {
+    return Response.json({ error: "Please enter a valid email address." }, { status: 400 });
+  }
+  if (name.length > 100 || email.length > 200 || message.length > 5000) {
+    return Response.json({ error: "Your message is too long." }, { status: 400 });
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -38,6 +62,7 @@ export async function POST(request: Request) {
   });
 
   if (!response.ok) {
+    console.error("Resend error:", response.status, await response.text());
     return Response.json({ error: "Could not send the message." }, { status: 502 });
   }
 
