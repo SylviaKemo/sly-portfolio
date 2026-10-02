@@ -11,7 +11,6 @@ const pad = (n: number) => String(n).padStart(2, "0");
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
   const total = testimonials.length;
-  const current = testimonials[index];
 
   const prev = () => setIndex((index - 1 + total) % total);
   const next = () => setIndex((index + 1) % total);
@@ -35,20 +34,29 @@ export default function Testimonials() {
         </Reveal>
 
         <Reveal className="min-w-0 md:col-span-2">
-          <figure aria-live="polite">
-            <blockquote className="text-[clamp(26px,3.2vw,46px)] leading-[1.18] tracking-[-0.02em] text-pretty">
-              “{current.quote}”
-            </blockquote>
-            <figcaption className="mt-9 flex items-center gap-4">
-              <span className="size-12 rounded-full bg-[repeating-linear-gradient(135deg,var(--s2)_0_5px,var(--s3)_5px_10px)]" />
-              <span>
-                <span className="block text-[17px] font-semibold">{current.name}</span>
-                <span className="mt-1 block text-xs tracking-[0.08em] text-muted uppercase">
-                  {current.role}
-                </span>
-              </span>
-            </figcaption>
-          </figure>
+          {/* All quotes share one grid cell, so the section keeps the height
+              of the longest quote and doesn't jump when switching. */}
+          <div aria-live="polite" className="grid">
+            {testimonials.map((testimonial, i) => (
+              <figure
+                key={testimonial.name}
+                aria-hidden={i !== index}
+                className={`col-start-1 row-start-1 transition-opacity duration-500 ${
+                  i === index ? "opacity-100" : "invisible opacity-0"
+                }`}
+              >
+                <blockquote className="text-[clamp(22px,2.4vw,34px)] leading-[1.3] tracking-[-0.015em] text-pretty">
+                  “{testimonial.quote}”
+                </blockquote>
+                <figcaption className="mt-8">
+                  <span className="block text-[17px] font-semibold">{testimonial.name}</span>
+                  <span className="mt-1 block text-xs tracking-[0.08em] text-muted uppercase">
+                    {testimonial.role}
+                  </span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </Reveal>
       </div>
     </Section>
