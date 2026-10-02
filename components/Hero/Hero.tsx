@@ -4,7 +4,10 @@ import Reveal from "@/components/ui/Reveal";
 import { profile } from "@/data/profile";
 import { heroStack } from "@/data/tech";
 import Blob from "./Blob";
+import CertBadge from "./CertBadge";
+import HireBadge from "./HireBadge";
 import ScrollCue from "./ScrollCue";
+import SocialTab from "./SocialTab";
 import SpeechBubble from "./SpeechBubble";
 
 export default function Hero() {
@@ -55,9 +58,16 @@ export default function Hero() {
 
       {/* Right column: desktop only */}
       <div className="relative z-10 -mt-10 hidden flex-[1_1_360px] flex-col items-end justify-between gap-8 md:flex">
+        <Reveal>
+          <SocialTab />
+        </Reveal>
         <Reveal className="w-full max-w-[400px]">
           <SpeechBubble />
         </Reveal>
+        <Reveal>
+          <CertBadge />
+        </Reveal>
+        <HireBadge />
       </div>
     </section>
   );
