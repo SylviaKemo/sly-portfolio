@@ -1,1 +1,39 @@
 @import "tailwindcss";
+
+/* Midnight plum theme */
+:root {
+  --bg: #1d1135;
+  --ink: #ffffff;
+  --muted: #b9aed0;
+  --accent: #ffc0cb;
+  --on-accent: #12071f;
+  --page-top: #12071f;
+  --page-bottom: #2f204e;
+
+  /* Derived tones */
+  --ink2: color-mix(in oklab, var(--ink) 84%, var(--bg));
+  --line: color-mix(in oklab, var(--ink) 13%, var(--bg));
+  --line2: color-mix(in oklab, var(--ink) 22%, var(--bg));
+  --s1: color-mix(in oklab, var(--ink) 4%, var(--bg));
+  --s2: color-mix(in oklab, var(--ink) 7%, var(--bg));
+  --s3: color-mix(in oklab, var(--ink) 12%, var(--bg));
+}
+
+/* Expose tokens as Tailwind utilities, e.g. bg-accent, text-muted, border-line2 */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-ink2: var(--ink2);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-page: var(--page-top);
+  --color-line: var(--line);
+  --color-line2: var(--line2);
+  --color-s1: var(--s1);
+  --color-s2: var(--s2);
+  --color-s3: var(--s3);
+
+  --font-sans: var(--font-jost), sans-serif;
+  --font-serif: var(--font-instrument-serif), serif;
+}
