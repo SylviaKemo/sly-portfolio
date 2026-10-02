@@ -11,23 +11,31 @@ const inputClass = "bg-transparent py-1 text-[22px] outline-none placeholder:tex
 
 export default function ContactForm() {
   const [form, setForm] = useState(emptyForm);
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const update = (field: keyof typeof emptyForm) => (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => setForm({ ...form, [field]: event.target.value });
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    setSent(true);
+    setStatus("sending");
+
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    }).catch(() => null);
+
+    setStatus(response?.ok ? "sent" : "error");
   };
 
   const reset = () => {
     setForm(emptyForm);
-    setSent(false);
+    setStatus("idle");
   };
 
-  if (sent) {
+  if (status === "sent") {
     return (
       <div className="flex flex-col gap-4 rounded border border-line px-8 py-12">
         <span className={labelClass}>Message sent</span>
@@ -74,8 +82,13 @@ export default function ContactForm() {
         />
       </label>
       <ArrowButton type="submit" className="mt-7 self-start">
-        Send message
+        {status === "sending" ? "Sending…" : "Send message"}
       </ArrowButton>
+      {status === "error" && (
+        <p role="alert" className="mt-2 text-sm text-accent">
+          Something went wrong. Please email me directly instead.
+        </p>
+      )}
     </form>
   );
 }
