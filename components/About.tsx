@@ -8,15 +8,16 @@ export default function About() {
     <Section id="about">
       <div className="max-w-[1100px]">
         <Reveal>
-          <SectionTitle accent="My" title="Biography" />
+          <SectionTitle accent="About" title="Me" />
         </Reveal>
 
         <Reveal>
           <p className="max-w-[1020px] text-[clamp(18px,1.6vw,22px)] leading-[1.55] text-pretty text-muted">
-            I&apos;m a fullstack developer based in Nairobi, Kenya, with a love for building products
-            that feel as good as they work. I enjoy collaborating with new people and finding ideas in
-            different perspectives. Let&apos;s build your next product — from the database up to the
-            last pixel.
+            I&apos;m a fullstack developer based in Nairobi, Kenya. I build products around data,
+            fintech, and AI. I care about software that solves real problems, whether that&apos;s
+            simplifying payments, turning data into clear insights, adding AI to existing products, or
+            designing websites people actually enjoy using. Working on something interesting in these
+            areas? Let&apos;s talk.
           </p>
         </Reveal>
 
@@ -26,12 +27,16 @@ export default function About() {
               <div key={row.label} className="contents">
                 <dt className="text-[17px] tracking-[0.02em] text-muted uppercase">{row.label}</dt>
                 <dd className="text-[15px]">
-                  <a
-                    href={row.href}
-                    className="border-b border-line2 pb-1 transition-colors duration-250 hover:border-accent hover:text-accent"
-                  >
-                    {row.value}
-                  </a>
+                  {row.href ? (
+                    <a
+                      href={row.href}
+                      className="border-b border-line2 pb-1 transition-colors duration-250 hover:border-accent hover:text-accent"
+                    >
+                      {row.value}
+                    </a>
+                  ) : (
+                    row.value
+                  )}
                 </dd>
               </div>
             ))}

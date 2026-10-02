@@ -17,13 +17,13 @@ export function useTypewriter(lines: string[]) {
     let timer: ReturnType<typeof setTimeout>;
 
     const step = () => {
-      const line = lines[lineIndex];
+      const line = Array.from(lines[lineIndex]);
 
       if (!deleting) {
         charCount++;
         if (charCount === line.length) {
           deleting = true;
-          setText(line);
+          setText(line.join(""));
           timer = setTimeout(step, PAUSE);
           return;
         }
@@ -35,7 +35,7 @@ export function useTypewriter(lines: string[]) {
         }
       }
 
-      setText(line.slice(0, charCount));
+      setText(line.slice(0, charCount).join(""));
       timer = setTimeout(step, deleting ? DELETE_SPEED : TYPE_SPEED);
     };
 

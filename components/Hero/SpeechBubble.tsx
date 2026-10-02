@@ -5,7 +5,7 @@ import { useTypewriter } from "./useTypewriter";
 
 const lines = [
   "Welcome to my website",
-  "I am a Fullstack Developer",
+  "Building something in fintech, data or AI? I'd love to hear about it 👋",
   "I build APIs that never flinch",
   "and interfaces people enjoy",
 ];

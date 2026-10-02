@@ -44,7 +44,7 @@ export default function Hero() {
         <Reveal className="flex max-w-[300px] flex-col items-center gap-4 md:items-start">
           <h2 className="text-[22px] font-semibold tracking-[-0.01em]">{profile.role}</h2>
           <p className="text-[15px] leading-[1.55] text-pretty text-ink2">
-            Building fast, reliable web products end to end — from Nairobi, for everywhere.
+            Building products around data, fintech, AI, and the web.
           </p>
           <div className="flex gap-2">
             {heroStack.map((item) => (
