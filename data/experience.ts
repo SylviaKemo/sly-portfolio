@@ -1,57 +1,46 @@
 import type { Tech } from "./types";
-import { tech } from "./tech";
 
 export type Experience = {
   period: string;
   role: string;
   company: string;
-  location: string;
   description: string;
-  /** Shown in the company hover card */
-  highlight: string;
-  stack: Tech[];
+  /** Optional hover card on the company name. Leave out to show plain text. */
+  details?: {
+    location: string;
+    highlight: string;
+    stack: Tech[];
+  };
 };
 
-// TODO: replace placeholders with real roles and companies. Newest first.
+/** Timeline entries, shown top to bottom, alternating left and right. */
 export const experience: Experience[] = [
   {
-    period: "2025 — Present",
+    period: "May 2025 – June 2026",
     role: "Fullstack Developer",
-    company: "Company name",
-    location: "Nairobi · Hybrid",
+    company: "NexusWaveAI",
     description:
-      "Building product features across the stack — REST APIs in Node.js and React interfaces used daily.",
-    highlight: "Leads features end to end across API and UI for a product used daily.",
-    stack: [tech.nextjs, tech.node, tech.postgres],
+      "Built a real-time analytics dashboard for a customer support platform, plus an AI tool that automatically sorts incoming tickets, cutting managers' reporting time by 40%.",
   },
   {
-    period: "2024 — 2025",
-    role: "Software Engineer",
-    company: "Company name",
-    location: "Remote · Full-time",
+    period: "Jan 2024 – Feb 2025",
+    role: "Frontend Developer",
+    company: "GroupWork",
     description:
-      "Designed scalable service architecture and shipped features with product and design teams.",
-    highlight: "Designed a service architecture handling 3× traffic with no added infra cost.",
-    stack: [tech.typescript, tech.postgres, tech.docker],
+      "Built the frontend for a school management platform used by 1,000+ teachers and students, including dashboards, class scheduling, and Zoom and Google Meet integration.",
   },
   {
-    period: "2023 — 2024",
-    role: "Backend Developer",
-    company: "Company name",
-    location: "Nairobi · Full-time",
+    period: "Feb 2023 – Dec 2023",
+    role: "Frontend Developer Intern",
+    company: "VellTech",
     description:
-      "Developed Express and MongoDB services, payment integrations, and automated tests for core endpoints.",
-    highlight: "Shipped payment integrations and grew endpoint test coverage to 85%.",
-    stack: [tech.node, tech.express, tech.mongodb],
+      "Led the development of websites and online stores from start to finish, working closely with designers and project managers to deliver them.",
   },
   {
-    period: "2022 — 2023",
-    role: "Frontend Developer — Intern",
-    company: "Company name",
-    location: "Nairobi · Internship",
+    period: "Mar 2023 – Mar 2024",
+    role: "Software Developer",
+    company: "Marstruct",
     description:
-      "Implemented responsive designs and improved performance and accessibility across the marketing site.",
-    highlight: "Rebuilt the marketing site for speed — Lighthouse performance from 62 to 95.",
-    stack: [tech.react, tech.tailwind, tech.git],
+      "Built full-stack features for web apps, from secure logins and APIs to cloud deployments on AWS.",
   },
 ];

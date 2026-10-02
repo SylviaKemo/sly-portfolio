@@ -7,8 +7,14 @@ type CompanyCardProps = {
   align: "left" | "right";
 };
 
-/** "@ Company" label that reveals a details card on hover or focus. */
+/** "@ Company" label that reveals a details card on hover or focus (when details exist). */
 export default function CompanyCard({ item, align }: CompanyCardProps) {
+  const { details } = item;
+
+  if (!details) {
+    return <span className="text-[15px] text-ink2">@ {item.company}</span>;
+  }
+
   return (
     <span className="group relative inline-block">
       <span
@@ -28,12 +34,12 @@ export default function CompanyCard({ item, align }: CompanyCardProps) {
           <span className="size-10 flex-none rounded-full bg-[repeating-linear-gradient(135deg,var(--s2)_0_4px,var(--s3)_4px_8px)]" />
           <span className="flex flex-col gap-0.5">
             <strong className="text-[15px] font-semibold">{item.company}</strong>
-            <span className="text-xs text-muted">{item.location}</span>
+            <span className="text-xs text-muted">{details.location}</span>
           </span>
         </span>
-        <span className="mt-3 block text-[13px] leading-normal text-ink2">{item.highlight}</span>
+        <span className="mt-3 block text-[13px] leading-normal text-ink2">{details.highlight}</span>
         <span className="mt-3 flex gap-1.5">
-          {item.stack.map((stackItem) => (
+          {details.stack.map((stackItem) => (
             <LogoChip key={stackItem.name} tech={stackItem} size={26} iconSize="14px" />
           ))}
         </span>
