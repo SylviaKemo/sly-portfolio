@@ -5,9 +5,8 @@ import { useTypewriter } from "./useTypewriter";
 
 const lines = [
   "Welcome to my website",
-  "I am a Fullstack Developer",
-  "I build APIs that never flinch",
-  "and interfaces people enjoy",
+  "Building something in fintech, data or AI? I'd love to hear about it 👋",
+  "Need a website or a smarter product? Let's talk.",
 ];
 
 /** Chat-style bubble that cycles through typed messages. */

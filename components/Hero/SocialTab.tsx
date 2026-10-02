@@ -1,4 +1,10 @@
+import { GitHubIcon, LinkedInIcon } from "@/components/ui/SocialIcons";
 import { socials } from "@/data/profile";
+
+const icons: Record<string, React.ReactNode> = {
+  GitHub: <GitHubIcon />,
+  LinkedIn: <LinkedInIcon />,
+};
 
 /** Vertical tab of social links with a "Follow me" label. */
 export default function SocialTab() {
@@ -14,7 +20,7 @@ export default function SocialTab() {
           rel="noreferrer"
           className="grid size-7 place-items-center rounded-full border border-line2 text-xs transition-colors duration-250 hover:border-accent hover:bg-accent hover:text-on-accent"
         >
-          {social.short}
+          {icons[social.name]}
         </a>
       ))}
       <span className="-mb-px rounded-br-[10px] bg-accent px-1.5 py-3 text-[11px] tracking-[0.14em] text-on-accent [writing-mode:vertical-rl]">
