@@ -16,3 +16,13 @@ export const socials = [
   { short: "In", name: "LinkedIn", href: profile.linkedin },
   { short: "✉", name: "Email", href: `mailto:${profile.email}` },
 ];
+
+/** Rows of the About section's details list. */
+export const details = [
+  { label: "Name", value: profile.name, href: profile.linkedin },
+  { label: "Address", value: profile.location, href: "https://maps.google.com/?q=Nairobi,Kenya" },
+  { label: "Phone", value: profile.phone, href: profile.phoneHref },
+  { label: "Email", value: profile.email, href: `mailto:${profile.email}` },
+  { label: "GitHub", value: "SylviaKemo", href: profile.github },
+  { label: "LinkedIn", value: profile.name, href: profile.linkedin },
+];
