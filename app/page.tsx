@@ -2,6 +2,7 @@ import About from "@/components/About";
 import Hero from "@/components/Hero/Hero";
 import Journey from "@/components/Journey/Journey";
 import FloatingPill from "@/components/Nav/FloatingPill";
+import Services from "@/components/Services/Services";
 import Work from "@/components/Work/Work";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
         <About />
         <Journey />
         <Work />
+        <Services />
       </main>
       <FloatingPill />
     </>
