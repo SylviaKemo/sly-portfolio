@@ -39,7 +39,7 @@ export const experience: Experience[] = [
   {
     period: "Jun 2022 – Feb 2023",
     role: "Software Developer Intern",
-    company: "Marstruct",
+    company: "Mastruck",
     description:
       "Built full-stack features for web apps, from secure logins and APIs to cloud deployments on AWS.",
   },
