@@ -37,3 +37,82 @@
   --font-sans: var(--font-jost), sans-serif;
   --font-serif: var(--font-instrument-serif), serif;
 }
+
+/* Animations — used as animate-hero-blob, animate-tool-bob, etc. */
+@theme {
+  --animate-hero-blob: hero-blob 14s ease-in-out infinite;
+  --animate-hero-scroll: hero-scroll 2.2s ease-in-out infinite;
+  --animate-spin-slow: spin 12s linear infinite;
+  --animate-tl-pulse: tl-pulse 2.4s ease-in-out infinite;
+  --animate-tool-bob: tool-bob 4s ease-in-out infinite;
+  --animate-work-pulse: work-pulse 2s infinite;
+
+  @keyframes hero-blob {
+    0%, 100% {
+      border-radius: 42% 58% 63% 37% / 45% 41% 59% 55%;
+      transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    }
+    33% {
+      border-radius: 61% 39% 44% 56% / 58% 60% 40% 42%;
+      transform: translate(-50%, -50%) rotate(60deg) scale(1.05);
+    }
+    66% {
+      border-radius: 38% 62% 55% 45% / 40% 52% 48% 60%;
+      transform: translate(-50%, -50%) rotate(120deg) scale(0.96);
+    }
+  }
+  @keyframes hero-scroll {
+    0% { transform: translateY(0); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: translateY(14px); opacity: 0; }
+  }
+  @keyframes tl-pulse {
+    0%, 100% { box-shadow: 0 0 0 6px color-mix(in oklab, var(--accent) 20%, transparent), 0 0 18px var(--accent); }
+    50% { box-shadow: 0 0 0 12px color-mix(in oklab, var(--accent) 8%, transparent), 0 0 32px var(--accent); }
+  }
+  @keyframes tool-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes work-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(140, 140, 140, 0.35); }
+    70% { box-shadow: 0 0 0 6px rgba(140, 140, 140, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(140, 140, 140, 0); }
+  }
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+  background: var(--page-top);
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: clip;
+  color: var(--ink);
+  background: linear-gradient(to bottom, var(--page-top), var(--page-bottom));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
