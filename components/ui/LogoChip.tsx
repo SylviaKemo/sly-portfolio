@@ -21,8 +21,8 @@ export default function LogoChip({ tech, size = 40, iconSize = "55%" }: LogoChip
       style={{
         width: fill ? undefined : size,
         height: fill ? undefined : size,
-        backgroundImage: `url(https://cdn.simpleicons.org/${tech.slug}/${tech.color})`,
-        backgroundSize: iconSize,
+        backgroundImage: `url(${tech.src ?? `https://cdn.simpleicons.org/${tech.slug}/${tech.color}`})`,
+        backgroundSize: tech.iconSize ?? iconSize,
       }}
     />
   );

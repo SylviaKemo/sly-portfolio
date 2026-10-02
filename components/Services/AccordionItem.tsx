@@ -56,9 +56,9 @@ export default function AccordionItem({ service, number, open, onToggle }: Accor
               <p className="text-sm leading-[1.8] tracking-[0.06em] text-pretty text-ink2 uppercase">
                 {service.description}
               </p>
-              <div className="flex gap-2">
+              <div className="flex gap-1.5">
                 {service.logos.map((logo) => (
-                  <LogoChip key={logo.name} tech={logo} iconSize="22px" />
+                  <LogoChip key={logo.name} tech={logo} size={28} iconSize="60%" />
                 ))}
               </div>
             </div>

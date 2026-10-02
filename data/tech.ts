@@ -15,10 +15,13 @@ export const tech = {
   docker: { name: "Docker", slug: "docker", color: "2496ED" },
   git: { name: "Git", slug: "git", color: "F05032" },
   vercel: { name: "Vercel", slug: "vercel", color: "000000" },
+  mysql: { name: "MySQL", slug: "mysql", color: "4479A1" },
+  chartjs: { name: "Chart.js", slug: "chartdotjs", color: "FF6384" },
+  fastapi: { name: "FastAPI", slug: "fastapi", color: "009688" },
+  gemini: { name: "Gemini", slug: "googlegemini", color: "8E75B2" },
+  openai: { name: "OpenAI", slug: "openai", color: "000000", src: "/icons/openai.svg" },
   stripe: { name: "Stripe", slug: "stripe", color: "635BFF" },
-  figma: { name: "Figma", slug: "figma", color: "F24E1E" },
-  graphql: { name: "GraphQL", slug: "graphql", color: "E10098" },
-  github: { name: "GitHub", slug: "github", color: "181717" },
+  mpesa: { name: "M-Pesa", slug: "mpesa", color: "4CAF50", src: "/icons/mpesa.svg", iconSize: "88%" },
 } satisfies Record<string, Tech>;
 
 export const heroStack = [tech.react, tech.typescript, tech.node, tech.python];
