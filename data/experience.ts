@@ -32,7 +32,7 @@ export const experience: Experience[] = [
   {
     period: "Aug 2023 – Jan 2024",
     role: "Frontend Developer Intern",
-    company: "Velltech Group",
+    company: "VellTech Group",
     description:
       "Led the development of websites and online stores from start to finish, working closely with designers and project managers to deliver them.",
   },

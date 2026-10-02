@@ -49,6 +49,7 @@
   --animate-tool-bob: tool-bob 4s ease-in-out infinite;
   --animate-work-pulse: work-pulse 2s infinite;
   --animate-caret: caret 1.06s step-end infinite;
+  --animate-progress: progress linear forwards;
 
   @keyframes hero-blob {
     0%, 100% {
@@ -72,6 +73,10 @@
   @keyframes tl-pulse {
     0%, 100% { box-shadow: 0 0 0 6px color-mix(in oklab, var(--accent) 20%, transparent), 0 0 18px var(--accent); }
     50% { box-shadow: 0 0 0 12px color-mix(in oklab, var(--accent) 8%, transparent), 0 0 32px var(--accent); }
+  }
+  @keyframes progress {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
   }
   @keyframes caret {
     50% { opacity: 0; }

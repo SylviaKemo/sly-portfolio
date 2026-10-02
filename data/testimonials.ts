@@ -27,6 +27,6 @@ export const testimonials: Testimonial[] = [
     quote:
       "Working with Sylvia made our projects run smoothly. She led several of our websites and online stores from start to finish, kept the team organized during sprints, and delivered work we were proud to show clients.",
     name: "Annette Wanjiku",
-    role: "Senior Fullstack Dev, VellTech",
+    role: "Senior Fullstack Dev, VellTech Group",
   },
 ];
