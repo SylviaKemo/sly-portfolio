@@ -1,11 +1,12 @@
 "use client";
 
-import { useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 import CircleButton from "@/components/ui/CircleButton";
 import Reveal from "@/components/ui/Reveal";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
+import CaseStudyDrawer from "./CaseStudyDrawer";
 import { MoreProjectsCard, ProjectCard } from "./ProjectCard";
 
 const GAP = 16;
@@ -13,6 +14,10 @@ const GAP = 16;
 /** Horizontal scroll-snap carousel. Arrows move one card and wrap at the ends. */
 export default function Carousel() {
   const trackRef = useRef<HTMLDivElement>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const closeDrawer = useCallback(() => setOpenIndex(null), []);
+
+  const openProject = openIndex === null ? null : projects[openIndex];
 
   const scroll = (direction: 1 | -1) => {
     const track = trackRef.current;
@@ -47,10 +52,23 @@ export default function Carousel() {
         className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-smooth px-1.5 pt-[15px] pb-6 [scrollbar-width:none]"
       >
         {projects.map((project, index) => (
-          <ProjectCard key={project.title} project={project} number={index + 1} />
+          <ProjectCard
+            key={project.title}
+            project={project}
+            number={index + 1}
+            onOpenCaseStudy={() => setOpenIndex(index)}
+          />
         ))}
         <MoreProjectsCard href={profile.github} />
       </div>
+
+      {openProject?.caseStudy && openIndex !== null && (
+        <CaseStudyDrawer
+          project={{ ...openProject, caseStudy: openProject.caseStudy }}
+          number={openIndex + 1}
+          onClose={closeDrawer}
+        />
+      )}
     </>
   );
 }

@@ -50,6 +50,7 @@
   --animate-work-pulse: work-pulse 2s infinite;
   --animate-caret: caret 1.06s step-end infinite;
   --animate-progress: progress linear forwards;
+  --animate-drawer-in: drawer-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
 
   @keyframes hero-blob {
     0%, 100% {
@@ -73,6 +74,10 @@
   @keyframes tl-pulse {
     0%, 100% { box-shadow: 0 0 0 6px color-mix(in oklab, var(--accent) 20%, transparent), 0 0 18px var(--accent); }
     50% { box-shadow: 0 0 0 12px color-mix(in oklab, var(--accent) 8%, transparent), 0 0 32px var(--accent); }
+  }
+  @keyframes drawer-in {
+    from { transform: translateX(100%); }
+    to { transform: none; }
   }
   @keyframes progress {
     from { transform: scaleX(0); }
