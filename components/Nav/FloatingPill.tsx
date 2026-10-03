@@ -1,18 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { navSections } from "@/data/navigation";
 import { useActiveSection } from "./useActiveSection";
 
 const sectionIds = navSections.map((section) => section.id);
 
+// On phones the pill waits until the visitor scrolls this far, so it doesn't
+// cover the hero's chat bubble at the bottom of the first screen.
+const MOBILE_SHOW_AFTER = 160;
+
 /**
  * Bottom-centre pill. Collapsed it shows the current section;
  * on hover (or tap) it expands to every section link.
+ * On phones it stays hidden at the very top of the page.
  */
 export default function FloatingPill() {
   const [open, setOpen] = useState(false);
   const active = useActiveSection(sectionIds);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > MOBILE_SHOW_AFTER);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
 
   const activeIndex = Math.max(0, sectionIds.indexOf(active));
   const activeNumber = String(activeIndex).padStart(2, "0");
@@ -22,7 +35,9 @@ export default function FloatingPill() {
       aria-label="Sections"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
-      className="fixed bottom-6 left-1/2 z-60 flex max-w-[calc(100vw-32px)] -translate-x-1/2 items-center gap-1 overflow-x-auto rounded-full border border-line2 bg-bg/82 p-1.5 text-xs tracking-[0.06em] whitespace-nowrap uppercase shadow-[0_18px_50px_rgba(0,0,0,0.35)] backdrop-blur-[14px] [scrollbar-width:none]"
+      className={`fixed bottom-6 left-1/2 z-60 flex max-w-[calc(100vw-32px)] -translate-x-1/2 items-center gap-1 overflow-x-auto rounded-full border border-line2 bg-bg/82 p-1.5 text-xs tracking-[0.06em] whitespace-nowrap uppercase shadow-[0_18px_50px_rgba(0,0,0,0.35)] backdrop-blur-[14px] transition-[opacity,translate,visibility] duration-300 [scrollbar-width:none] ${
+        scrolled ? "" : "max-md:invisible max-md:translate-y-4 max-md:opacity-0"
+      }`}
     >
       {open ? (
         navSections.slice(1).map((section) => (
