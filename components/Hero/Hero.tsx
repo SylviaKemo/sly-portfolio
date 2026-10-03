@@ -6,6 +6,7 @@ import { heroStack } from "@/data/tech";
 import Blob from "./Blob";
 import CertBadge from "./CertBadge";
 import HireBadge from "./HireBadge";
+import MobileBubble from "./MobileBubble";
 import ScrollCue from "./ScrollCue";
 import SocialTab from "./SocialTab";
 import SpeechBubble from "./SpeechBubble";
@@ -14,7 +15,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[max(100vh,760px)] flex-wrap justify-between gap-8 overflow-hidden px-[clamp(20px,4vw,56px)] pt-[110px] pb-10"
+      className="relative flex min-h-[max(100vh,760px)] flex-wrap justify-between gap-8 overflow-x-clip px-[clamp(20px,4vw,56px)] pt-[110px] pb-10"
     >
       {/* Background: blob + portrait */}
       <div className="pointer-events-none absolute inset-0 z-0">
@@ -28,6 +29,7 @@ export default function Hero() {
             sizes="(min-width: 768px) 60vh, 90vw"
             className="object-contain object-bottom"
           />
+          <MobileBubble />
         </div>
       </div>
 

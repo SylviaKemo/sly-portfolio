@@ -1,26 +1,15 @@
-"use client";
-
 import Image from "next/image";
-import { useTypewriter } from "./useTypewriter";
+import TypingText from "./TypingText";
 
-const lines = [
-  "Welcome to my website",
-  "Building something in fintech, data or AI? I'd love to hear about it 👋",
-  "Need a website or a smarter product? Let's talk.",
-];
-
-/** Chat-style bubble that cycles through typed messages. */
+/** Desktop chat bubble with avatar (right column of the hero). */
 export default function SpeechBubble() {
-  const text = useTypewriter(lines);
-
   return (
     <div className="flex w-[min(100%,400px)] items-end gap-2.5">
       <p
         aria-live="polite"
         className="min-h-[100px] flex-1 rounded-[20px_20px_0_20px] bg-ink p-6 text-lg leading-[1.4] text-bg"
       >
-        {text}
-        <span className="ml-0.5 inline-block h-[1.1em] w-0.5 animate-caret bg-bg align-[-0.2em]" />
+        <TypingText />
       </p>
       <Image
         src="/images/sylvia-avatar.jpg"
