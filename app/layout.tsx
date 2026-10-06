@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sylvia Kemo — Fullstack Developer",
     description,
-    images: ["/images/sylvia-avatar.jpg"],
+    images: ["/images/sylvia-photo.jpg"],
     type: "website",
   },
 };

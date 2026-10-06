@@ -22,7 +22,7 @@ export default function Hero() {
         <Blob />
         <div className="absolute bottom-0 left-1/2 aspect-[3/4] h-[48%] max-w-[90vw] -translate-x-1/2 md:h-[80%]">
           <Image
-            src="/images/sylvia-cutout.png"
+            src="/images/sylvia-portrait.png"
             alt="Portrait of Sylvia Kemo"
             fill
             priority

@@ -12,7 +12,7 @@ export default function SpeechBubble() {
         <TypingText />
       </p>
       <Image
-        src="/images/sylvia-avatar.jpg"
+        src="/images/sylvia-photo.jpg"
         alt="Sylvia"
         width={50}
         height={50}
