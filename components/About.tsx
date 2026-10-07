@@ -44,6 +44,7 @@ export default function About() {
 
           <a
             href={profile.cvUrl}
+            download="Sylvia-Kemo-Resume.pdf"
             className="flex min-h-[200px] flex-[0_1_300px] flex-col items-center justify-center gap-[22px] border border-line2 transition-colors duration-300 hover:border-accent hover:bg-s1"
           >
             <span className="grid size-[72px] place-items-center rounded-full border-[1.5px] border-ink text-[30px] leading-none">

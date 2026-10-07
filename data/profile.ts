@@ -6,7 +6,7 @@ export const profile = {
   email: "sylviakemo@gmail.com",
   github: "https://github.com/SylviaKemo",
   linkedin: "https://www.linkedin.com/in/sylvia-kemo/",
-  cvUrl: "#", // TODO: replace with the real CV PDF link
+  cvUrl: "/sylvia-kemo-resume.pdf", // file lives in /public
 };
 
 export const socials = [
