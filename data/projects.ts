@@ -52,7 +52,14 @@ export const projects: Project[] = [
     },
   },
   // TODO: replace placeholders with real projects and screenshots.
-  { title: "Project Two", year: "2025", stack: "Next.js · Postgres", tags: ["SaaS", "Frontend"], href: "#" },
+  {
+    title: "Second Draft",
+    year: "2026",
+    stack: "Next.js · TypeScript · Tailwind · GSAP",
+    tags: ["Landing", "Motion"],
+    href: "https://consulting-website-one-black.vercel.app",
+    image: "/images/projects/second-draft-hero.webp",
+  },
   { title: "Project Three", year: "2025", stack: "Node · Redis · Docker", tags: ["API", "Backend"], href: "#" },
   { title: "Project Four", year: "2024", stack: "React · Tailwind", tags: ["Landing", "Motion"], href: "#" },
 ];
